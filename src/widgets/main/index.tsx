@@ -5,7 +5,6 @@ import { ResultsTable } from "@/components/resultsTable";
 import { Switcher } from "@/components/switcher";
 import { useState } from "react";
 import { performStandardCalculation } from "./helpers";
-import { Styled } from "./styled";
 import { IHistoryItem, ICalculationResult } from "./types";
 
 export const Main = () => {
@@ -67,29 +66,27 @@ export const Main = () => {
     };
 
     return (
-        <Styled.Wrapper>
-            <Styled.Container>
-                <Input
-                    value={inputValue}
-                    onChange={handleInputChange}
-                    placeholder="Pointer count"
-                    type="number"
-                />
-                <Switcher
-                    value={value}
-                    onChange={setValue}
-                    buttons={[
-                        { label: "Standard", value: 1 },
-                        { label: "Webworker", value: 2 },
-                    ]}
-                />
-                <Button
-                    label={isCalculating ? "Calculating..." : "Calculate"}
-                    onClick={handleCalculate}
-                />
+        <>
+            <Input
+                value={inputValue}
+                onChange={handleInputChange}
+                placeholder="Pointer count"
+                type="number"
+            />
+            <Switcher
+                value={value}
+                onChange={setValue}
+                buttons={[
+                    { label: "Standard", value: 1 },
+                    { label: "Webworker", value: 2 },
+                ]}
+            />
+            <Button
+                label={isCalculating ? "Calculating..." : "Calculate"}
+                onClick={handleCalculate}
+            />
 
-                <ResultsTable history={history} />
-            </Styled.Container>
-        </Styled.Wrapper>
+            <ResultsTable history={history} />
+        </>
     );
 };
